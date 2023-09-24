@@ -24,7 +24,7 @@ ealing-bin addresses W3 9JW
 
 Set the `EALING_BIN_UPRN` enviroment variable to the UPRN corresponding to your address
 
-Run th web server `ealing-bin`
+Run th web server `ealing-bin serve`
 
 Open your browser `http://localhost:8080/`
 
