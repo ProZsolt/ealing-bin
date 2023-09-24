@@ -240,10 +240,20 @@ func main() {
 
 	switch os.Args[1] {
 	case "addresses":
-		postcode := strings.Join(os.Args[2:], " ")
+		postcodeArr := os.Args[2:]
+		if len(postcodeArr) == 0 {
+			fmt.Println("no postcode provided")
+			os.Exit(1)
+		}
+		if len(postcodeArr) != 2 {
+			fmt.Println("the provided postcode is not correct")
+			os.Exit(1)
+		}
+		postcode := strings.Join(postcodeArr, " ")
 		ar, err := getAddresses(postcode)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println("expected 'addresses' or 'serve' subcommands")
+			os.Exit(1)
 		}
 		for _, a := range ar.Addresess {
 			fmt.Printf("%s: %s\n", a.UPRN, strings.TrimSpace(a.Address))
